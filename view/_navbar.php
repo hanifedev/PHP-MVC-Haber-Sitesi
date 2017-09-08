@@ -7,24 +7,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+                <?php foreach($getKat as $kat): ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="samsunhaber.php">SAMSUN HABER</a>
+                    <a class="nav-link" href="kategoriDetay.php?id=<?=$kat->id?>"><?=$kat->title?></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="gundem.php">GÜNDEM</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="spor.php">SPOR</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="egitim.php">EĞİTİM</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="ekonomi.php">EKONOMİ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="magazin.php">MAGAZİN</a>
-                </li>
+                <?php endforeach;?>
             </ul>
         </div>
     </div>

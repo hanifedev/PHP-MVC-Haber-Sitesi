@@ -20,6 +20,16 @@ class News extends Connection{
         return $posts;
     }
 
+    public function findById($id){
+        $kats = $this->con->query("SELECT * FROM kategoriler WHERE id =".$id)->fetchObject();
+        return $kats;
+    }
+
+    public function getAllKats(){
+        $kats = $this->con->query("SELECT * FROM kategoriler")->fetchAll(PDO::FETCH_OBJ);
+        return $kats;
+    }
+
     public function getAllNews($orderBy = "FIRST"){
         if($orderBy==="FIRST") $orderByAtQuery = "ASC";
         elseif($orderBy==="LAST") $orderByAtQuery = "DESC";
@@ -38,15 +48,29 @@ class News extends Connection{
         return $posts;
     }
 
-    public function orderByKat($katId = 1){
-        $katId = (int)$katId;
+    public function orderByKat($katId){
         $posts = $this->con->query("SELECT * FROM haberler WHERE category_id = ".$katId)->fetchAll(PDO::FETCH_OBJ);
         return $posts;
+    }
+
+    public function initById($id){
+        $postById = $this->con->query("SELECT * FROM haberler WHERE id =".$id)->fetchObject();
+        return $postById;
+    }
+
+    public static function find($id){
+        $returnObj = new self;
+        return $returnObj->initById($id);
     }
 
     public static function all($orderBy = "FIRST"){
         $selfObj = new self;
         return $selfObj->getAllNews($orderBy);
+    }
+
+    public static function allKategories(){
+        $selfObj = new self;
+        return $selfObj->getAllKats();
     }
 
     public static function get($orderBy = "LAST", $count = 3, $startFrom = 0){
@@ -59,7 +83,7 @@ class News extends Connection{
         return $selfObj->orderByRead($orderBy,$count,$startFrom);
     }
 
-    public static function orderKategori($katId = 1){
+    public static function orderKategori($katId){
         $selfObj = new self;
         return $selfObj->orderByKat($katId);
     }

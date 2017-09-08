@@ -1,3 +1,4 @@
+<?php require_once "view/_header.php"; ?>
 <?php require_once "view/_navbar.php"; ?>
 
 <header>
@@ -7,17 +8,11 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
-
-        <div class="carousel-inner" role="listbox">
-            <?php foreach($all_news as $news): ?>
-
-            <!-- Slide One - Set the background image for this slide in the line below -->
-            <div class="carousel-item active" style="background-image: url('<?=$news->fotograf?>')">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3><?=$news->title?></h3>
-                    <p><?=$news->aciklama?></p>
-                    <?php endforeach;?>
-                </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <?php foreach($kategori as $post):?>
+                <img class="d-block w-100" src="<?=$post->fotograf?>" style="width: 100%;">
+                <?php endforeach;?>
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -30,7 +25,6 @@
         </a>
     </div>
 </header>
-
 <!-- Page Content -->
 <div class="container">
     <!-- Page Heading/Breadcrumbs -->
@@ -42,14 +36,14 @@
 
         <?php foreach($all_news as $news): ?>
         <div class="col-md-4">
-                <a href="#">
+                <a href="detay.php?id=<?=$news->id?>">
                     <img class="img-fluid rounded mb-3 mb-md-0" src="<?=$news->fotograf?>" alt="">
                 </a>
             </div>
             <div class="col-md-5">
                 <h3><?=$news->title?></h3>
                 <p><?=$news->aciklama?></p>
-                <a class="btn btn-primary" href="#">Devamını Oku
+                <a class="btn btn-primary" href="detay.php?id=<?=$news->id?>">Devamını Oku
                     <span class="glyphicon glyphicon-chevron-right"></span>
                 </a>
                 <hr>
@@ -93,10 +87,10 @@
         <?php foreach($tumb as $news): ?>
             <div class="col-lg-3 portfolio-item">
             <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="<?=$news->fotograf?>" alt=""></a>
+                <a href="detay.php?id=<?=$news->id?>"><img class="card-img-top" src="<?=$news->fotograf?>" alt=""></a>
                 <div class="card-body">
                     <h4 class="card-title">
-                        <a href="#"><?=$news->title?></a>
+                        <a href="detay.php?id=<?=$news->id?>"><?=$news->title?></a>
                     </h4>
                     <p class="card-text"><?=$news->aciklama?></p>
                 </div>
@@ -112,7 +106,7 @@
         <?php foreach($kategori as $news): ?>
         <div class="col-sm-6 col-md-3">
             <div class="thumbnail">
-                <a href="#" class="thumbnail">
+                <a href="detay.php?id=<?=$news->id?>" class="thumbnail">
                 <img src="<?=$news->fotograf?>" style="width:242px;height:200px;">
             </div>
         </div>
@@ -121,3 +115,5 @@
     <hr>
 </div>
 <!-- /.container -->
+<?php require_once "view/_footer.php"; ?>
+
