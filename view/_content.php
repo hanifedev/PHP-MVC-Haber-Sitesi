@@ -84,7 +84,7 @@
     <h2>Popüler Haberler</h2>
 
     <div class="row">
-        <?php foreach($tumb as $news): ?>
+       <?php foreach($tumb as $news): ?>
             <div class="col-lg-3 portfolio-item">
             <div class="card h-100">
                 <a href="detay.php?id=<?=$news->id?>"><img class="card-img-top" src="<?=$news->fotograf?>" alt=""></a>
