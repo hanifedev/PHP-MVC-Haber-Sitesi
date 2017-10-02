@@ -5,7 +5,7 @@ class Connection{
     private $host = "localhost";
     private $dbname = "2017_habersitesi";
     private $username = "root";
-    private $password = "1234";
+    private $password = "";
 
     //obje ayağa kaldırılırken çalıştırılan method
 
