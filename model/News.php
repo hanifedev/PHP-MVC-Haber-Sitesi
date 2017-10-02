@@ -50,7 +50,20 @@ class News extends Connection{
         $count = (int)$count;
         $startFrom = (int)$startFrom;
         $posts = $this->con->query("SELECT * FROM haberler ORDER BY readcount ".$orderByAtRead." LIMIT ".$startFrom.",".$count);
-        return (object)$posts;
+        return $posts;
+    }
+
+    public function addYorum($haber_id, $yorum,$onay=0){
+        $add = $this->con->prepare("INSERT INTO yorumlar (konu_id,yorum,onay) VALUES (?,?,?)");
+        $isadded = $add->execute(array($haber_id,$yorum,$onay));
+        if($isadded)
+            return $isadded;
+        return false;
+    }
+
+    public function getYorum($haber_id){
+        $get = $this->con->query("SELECT * FROM yorumlar WHERE konu_id = ".$haber_id)->fetchAll(PDO::FETCH_OBJ);
+        return $get;
     }
 
     public function orderByKat($katId){

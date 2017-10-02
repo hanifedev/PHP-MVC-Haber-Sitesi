@@ -5,13 +5,12 @@ if($usrObj->isLoggedIn() == ""){
     $usrObj->redirect('login.php');
 }
 else{
-    $users = $usrObj->getAllUsers();
-    $userId = $_SESSION['user_session'];
+    $userId = $_SESSION['user_id'];
     $userInfo = $usrObj->getOneUser($userId);
-    if($userInfo["yetki"] != 1){
-        $usrObj->redirect('login.php');
+    if($userInfo["yetki"] == 1){
+        $usrObj->redirect('Admin.php');
     }
     else{
-        $usrObj->redirect('Admin.php');
+        $usrObj->redirect('index.php');
     }
 }

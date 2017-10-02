@@ -8,5 +8,5 @@ if($_POST){
 }
 if($usrObj->isLoggedIn() != "")
 {
-    header("Location:index.php");
+    $usrObj->redirect('index.php');
 }

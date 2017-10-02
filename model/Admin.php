@@ -9,6 +9,12 @@ class Admin extends Connection{
 		$get = $this->con->query("SELECT * from kategoriler WHERE id=".$catId)->fetch(PDO::FETCH_ASSOC);
 		return $get;
 	}*/
+
+	public function onayBekleyenYorumlar(){
+        $get = $this->con->query("SELECT * FROM yorumlar WHERE onay = 0")->fetchAll(PDO::FETCH_OBJ);
+        return $get;
+    }
+
 	public function addPicture($picture){
         $uzanti = array('image/jpeg', 'image/png', 'image/jpg', 'image/x-png', 'image/gif');
         $dizin = "images";

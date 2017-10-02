@@ -6,7 +6,8 @@ class User extends Connection{
     }
 
     public function getOneUser($userId){
-        $user = $this->con->query("SELECT * FROM users WHERE id = ". $userId)->fetch(PDO::FETCH_ASSOC);
+        $user = $this->con->query("SELECT * FROM users WHERE id=".$userId)->fetch(PDO::FETCH_ASSOC);
+        return $user;
     }
 
     public function registerUser($username,$password,$email,$fullname,$yetki=0){
@@ -44,19 +45,20 @@ class User extends Connection{
         return false;
     }
 
-    public function login($username,$password){
+    public function login($username,$password)
+    {
         $isThereUser = $this->con->prepare("SELECT * FROM users WHERE username=:username LIMIT 1");
-        $isThereUser->execute(array(':username'=>$username));
+        $isThereUser->execute(array(':username' => $username));
         $userRow = $isThereUser->fetch(PDO::FETCH_ASSOC);
-        if($isThereUser->rowCount()>0){
-            if(password_verify($password, $userRow['password'])){
-                $_SESSION['user_session'] = $userRow['user_id'];
-                return true;
+        if ($isThereUser->rowCount() > 0) {
+            if (password_verify($password, $userRow['password'])) {
+                    session_start();
+                    $_SESSION['user_id'] = $userRow['user_id'];
+                    return true;
+                } else {
+                    return false;
+                }
             }
-            else{
-                return false;
-            }
-        }
     }
 
     public function redirect($url){

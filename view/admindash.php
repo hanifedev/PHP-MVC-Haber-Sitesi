@@ -77,11 +77,11 @@
               </div>
             </form>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-              <i class="fa fa-fw fa-sign-out"></i>
-              Logout</a>
-          </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                    <i class="fa fa-fw fa-sign-out"></i>
+                    Logout</a>
+            </li>
         </ul>
       </div>
     </nav>
@@ -1091,8 +1091,8 @@
             Select "Logout" below if you are ready to end your current session.
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <a class="btn btn-primary" href="login.php">Logout</a>
           </div>
         </div>
       </div>
