@@ -1,6 +1,4 @@
 <?php
-
-require_once "inc/function.php";
 $all_news = News::get();
 $newsObj = new News();
 $tumb = $newsObj->orderByRead();

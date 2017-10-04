@@ -20,5 +20,4 @@ class Connection{
             die("Veritabanına bağlantı sağlanamadı.". $e->getMessage());
         }
     }
-
 }

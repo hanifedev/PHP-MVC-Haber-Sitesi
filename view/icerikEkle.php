@@ -117,7 +117,7 @@
         <div class="form-group">
           <label for="exampleFormControlFile1">Haber Fotoğrafı </label>
           <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
-          <input type="file" name="fotograf" class="form-control-file" id="exampleFormControlFile1">
+          <input type="file" name="fotograf" class="form-control-file" id="fotograf">
         </div>
         <div class="form-group">
           <textarea name="metin"></textarea>

@@ -1,4 +1,7 @@
 <?php
-require_once "inc/function.php";
-$usrObj = new User();
-$usrEdt = $usrObj->getOneUser($_GET['duzenle']);
+$usrObj = new News();
+$admnObj = new Admin();
+$catEdt = (array)($usrObj->findById($_GET["duzenle"]));
+if($_POST){
+    $admnObj->editCategory($_POST["id"], $_POST["baslik"]);
+}

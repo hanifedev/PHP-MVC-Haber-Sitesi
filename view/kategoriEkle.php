@@ -93,7 +93,7 @@
           <li class="breadcrumb-item">
             <a href="Admin.php">Anasayfa</a>
           </li>
-          <li class="breadcrumb-item active">İçerik Ekle</li>
+          <li class="breadcrumb-item active">Kategori Ekle</li>
         </ol>
         <form method="post">
          <div class="form-group">

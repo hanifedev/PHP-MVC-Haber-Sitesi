@@ -25,6 +25,11 @@ class News extends Connection{
         return $kats;
     }
 
+
+    public function newsFindById($id){
+        $hbr = $this->con->query("SELECT * FROM haberler WHERE id =".$id)->fetchObject();
+        return $hbr;
+    }
     public function getAllKats(){
         $kats = $this->con->query("SELECT * FROM kategoriler")->fetchAll(PDO::FETCH_OBJ);
         return $kats;

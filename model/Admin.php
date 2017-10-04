@@ -25,23 +25,17 @@ class Admin extends Connection{
             return false;
     }
 
-	public function addPicture($picture){
-        $uzanti = array('image/jpeg', 'image/png', 'image/jpg', 'image/x-png', 'image/gif');
-        $dizin = "images";
-        if(in_array($_FILES["fotograf"]["type"],$uzanti)){
-            move_uploaded_file($_FILES['fotograf']['tmp_name'],"./$dizin/{$_FILES['fotograf']['name']}");
-            $ekle = $this->con->prepare("INSERT INTO haberler (fotograf) VALUES (?)");
-            $add = $ekle->execute(array($picture));
-            return $add;
-        }
-        else{
-            return false;
-        }
-    }
 
-	public function addContent($baslik,$kategori,$aciklama,$metin,$fotograf=""){
+	public function addContent($baslik,$kategori,$aciklama,$metin,$picture){
+        $uzanti = array('jpeg', 'png', 'jpg', 'x-png', 'gif');
+        $target_dir = "images/";
+        $target_file = $target_dir . basename($picture);
+        $imageFileType = pathinfo($picture,PATHINFO_EXTENSION);
+        if(in_array($imageFileType,$uzanti)){
+            move_uploaded_file($_FILES["fotograf"]["tmp_name"],$target_file);
+        }
 	    $add = $this->con->prepare("INSERT INTO haberler (title ,aciklama,content,category_id,fotograf) VALUES (?,?,?,?,?)");
-	    $isadded = $add->execute(array($baslik,$aciklama,$metin,$kategori,$fotograf));
+	    $isadded = $add->execute(array($baslik,$aciklama,$metin,$kategori,$target_file));
 	    if($isadded)
 	        return $isadded;
 	    else
@@ -56,6 +50,15 @@ class Admin extends Connection{
 		else
             return false;
 	}
+
+	public function editContent($id, $title, $aciklama, $content, $catId){
+	    $edit = $this->con->prepare("UPDATE haberler SET title=?, aciklama=?, content=?, category_id=? WHERE id=?");
+	    $contrl = $edit->execute(array($id,$title,$aciklama,$content,$catId));
+	    if($contrl)
+	        return true;
+	    else
+	        return false;
+    }
 
 	public function addCategory($catName){
 		$add = $this->con->prepare("INSERT INTO kategoriler (title) VALUES (?)");

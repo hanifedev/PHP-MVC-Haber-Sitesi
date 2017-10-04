@@ -52,8 +52,8 @@ class User extends Connection{
         $userRow = $isThereUser->fetch(PDO::FETCH_ASSOC);
         if ($isThereUser->rowCount() > 0) {
             if (password_verify($password, $userRow['password'])) {
-                    session_start();
-                    $_SESSION['user_id'] = $userRow['user_id'];
+                session_start();
+                $_SESSION['user_id'] = $userRow['user_id'];
                     return true;
                 }
                 else {
@@ -74,8 +74,9 @@ class User extends Connection{
     }
 
     public function logout(){
-        session_destroy();
-        unset($_SESSION['user_id']);
-        return true;
+        if(isset($_SESSION['user_id'])){
+            session_destroy();
+            unset($_SESSION['user_id']);
+        }
     }
 }

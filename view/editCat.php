@@ -106,7 +106,7 @@
                             </td>
                             <td class="text-center">
                                 <label>
-                                    <input type="text" name="id" class="form-control" value="<?=$usrEdt['id']?>" required/>
+                                    <input type="text" name="id" class="form-control" value="<?=$catEdt['id']?>" required/>
                                 </label>
                             </td>
                         </tr>
@@ -116,7 +116,7 @@
                             </td>
                             <td class="text-center">
                                 <label>
-                                    <input type="text" name="baslik" class="form-control" value="<?=$usrEdt['title']?>" required/>
+                                    <input type="text" name="baslik" class="form-control" value="<?=$catEdt['title']?>" required/>
                                 </label>
                             </td>
                         </tr>

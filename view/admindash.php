@@ -184,7 +184,7 @@
 
           <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  <a class="btn btn-primary" href="login.php">Logout</a>
+                  <a class="btn btn-primary" href="logout.php">Logout</a>
           </div>
         </div>
       </div>

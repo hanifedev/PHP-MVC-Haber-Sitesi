@@ -1,5 +1,4 @@
 <?php
-require_once "inc/function.php";
 if($_POST){
     $userObj = new User();
     $username = htmlspecialchars(strip_tags($_POST['username']));

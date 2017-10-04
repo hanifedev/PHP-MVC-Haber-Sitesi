@@ -106,7 +106,7 @@
                         </td>
                         <td class="text-center">
                             <label>
-                                <input type="text" name="id" class="form-control" value="<?=$usrEdt['id']?>" required/>
+                                <input type="text" name="id" class="form-control" value="<?=$cntEdt['id']?>" required/>
                             </label>
                         </td>
                     </tr>
@@ -116,7 +116,7 @@
                         </td>
                         <td class="text-center">
                             <label>
-                                <input type="text" name="baslik" class="form-control" value="<?=$usrEdt['title']?>" required/>
+                                <input type="text" name="baslik" class="form-control" value="<?=$cntEdt['title']?>" required/>
                             </label>
                         </td>
                     </tr>
@@ -126,7 +126,7 @@
                         </td>
                         <td class="text-center">
                             <label>
-                                <input type="text" name="aciklama" class="form-control" value="<?=$usrEdt['aciklama']?>" required/>
+                                <input type="text" name="aciklama" class="form-control" value="<?=$cntEdt['aciklama']?>" required/>
                             </label>
                         </td>
                     </tr>
@@ -136,7 +136,7 @@
                         </td>
                         <td class="text-center">
                             <label>
-                                <input name="metin" class="form-control" value="<?=$usrEdt['content']?>" required/>
+                                <input name="metin" class="form-control" value="<?=$cntEdt['content']?>" required/>
                             </label>
                         </td>
                     </tr>
