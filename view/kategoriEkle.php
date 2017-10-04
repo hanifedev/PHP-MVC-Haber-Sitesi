@@ -106,6 +106,10 @@
       </div>
       <!-- /.container-fluid -->
       <div class="card-body">
+          <div class="card-header">
+              <i class="fa fa-table"></i>
+              Kategoriler
+          </div><br>
             <div class="table-responsive">
               <table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
                 <thead>
@@ -129,8 +133,8 @@
                 <tr>
                     <td><?= $cat->id ?></td>
                     <td><?= $cat->title ?></td>
-                    <td><a href="#"><i class="fa fa-times"></i></a></td>
-                    <td><a href="#"><i class="fa fa-cog"></i></a></td>
+                    <td><a href="?sil=<?=$cat->id?>"><i class="fa fa-times"></i></a></td>
+                    <td><a href="editCat.php?duzenle=<?=$cat->id?>"><i class="fa fa-cog"></i></a></td>
                     <?php endforeach;?>
                 </tr>
                 </tbody>

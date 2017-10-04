@@ -6,7 +6,7 @@ class User extends Connection{
     }
 
     public function getOneUser($userId){
-        $user = $this->con->query("SELECT * FROM users WHERE id=".$userId)->fetch(PDO::FETCH_ASSOC);
+        $user = $this->con->query("SELECT * FROM users WHERE user_id=".$userId)->fetch(PDO::FETCH_ASSOC);
         return $user;
     }
 
@@ -55,7 +55,8 @@ class User extends Connection{
                     session_start();
                     $_SESSION['user_id'] = $userRow['user_id'];
                     return true;
-                } else {
+                }
+                else {
                     return false;
                 }
             }
@@ -67,14 +68,14 @@ class User extends Connection{
     }
 
     public function isLoggedIn(){
-        if(isset($_SESSION['user_session'])){
+        if(isset($_SESSION['user_id'])){
             return true;
         }
     }
 
     public function logout(){
         session_destroy();
-        unset($_SESSION['user_session']);
+        unset($_SESSION['user_id']);
         return true;
     }
 }

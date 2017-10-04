@@ -11,8 +11,18 @@ class Admin extends Connection{
 	}*/
 
 	public function onayBekleyenYorumlar(){
-        $get = $this->con->query("SELECT * FROM yorumlar WHERE onay = 0")->fetchAll(PDO::FETCH_OBJ);
+        $get = $this->con->query("SELECT * FROM yorumlar WHERE onay = '0'")->fetchAll(PDO::FETCH_OBJ);
         return $get;
+    }
+
+    public function yorumOnayla($yorum_id)
+    {
+        $onayla = $this->con->prepare("UPDATE yorumlar SET onay=? WHERE id=?");
+        $control = $onayla->execute(array('1', $yorum_id));
+        if ($control)
+            return true;
+        else
+            return false;
     }
 
 	public function addPicture($picture){
@@ -24,23 +34,27 @@ class Admin extends Connection{
             $add = $ekle->execute(array($picture));
             return $add;
         }
+        else{
+            return false;
+        }
     }
 
-	public function addContent($title,$aciklama,$content,$category_id){
-	    $add = $this->con->prepare("INSERT INTO haberler (title,aciklama,content,category_id) VALUES (?,?,?,?)");
-	    $isadded = $add->execute(array($title,$aciklama,$content,$category_id));
+	public function addContent($baslik,$kategori,$aciklama,$metin,$fotograf=""){
+	    $add = $this->con->prepare("INSERT INTO haberler (title ,aciklama,content,category_id,fotograf) VALUES (?,?,?,?,?)");
+	    $isadded = $add->execute(array($baslik,$aciklama,$metin,$kategori,$fotograf));
 	    if($isadded)
 	        return $isadded;
-	    return false;
+	    else
+	        return false;
     }
 
 	public function editCategory($catId, $catName){
 		$edit = $this->con->prepare("UPDATE kategoriler SET title=? WHERE id=?");
 		$control = $edit->execute(array($catName,$catId));
-		if($control){
+		if($control)
 		    return true;
-        }
-        return false;
+		else
+            return false;
 	}
 
 	public function addCategory($catName){
@@ -48,13 +62,31 @@ class Admin extends Connection{
 		$control = $add->execute(array($catName));
 		if($control)
 			return $control;
-		return false;
+		else
+		    return false;
 	}
 
 	public function deleteCategory($catId){
 		$delete = $this->con->exec("DELETE FROM kategoriler WHERE id=".$catId);
 		if($delete)
 			return true;
-		return false;
+		else
+		    return false;
 	}
+
+	public function deleteContent($cntId){
+        $delete = $this->con->exec("DELETE FROM haberler WHERE id=".$cntId);
+        if($delete)
+            return true;
+        else
+            return false;
+    }
+
+    public function deleteComment($cmtId){
+	    $delete = $this->con->exec("DELETE FROM yorumlar WHERE id=".$cmtId);
+	    if($delete)
+	        return true;
+	    else
+	        return false;
+    }
 }

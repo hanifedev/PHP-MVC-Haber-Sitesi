@@ -6,7 +6,13 @@ if($_POST){
     $password = $_POST['password'];
     $usrObj->login($username,$password);
 }
-if($usrObj->isLoggedIn() != "")
-{
-    $usrObj->redirect('index.php');
+if($usrObj->isLoggedIn() != "") {
+    $userId = $_SESSION['user_id'];
+    $userInfo = $usrObj->getOneUser($userId);
+    if($userInfo["yetki"] == "1"){
+        $usrObj->redirect('Admin.php');
+    }
+    else{
+        $usrObj->redirect('index.php');
+    }
 }

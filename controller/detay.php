@@ -8,6 +8,6 @@ $getKat = $obj->getSomeKats();
 $haber_id = $_GET['id'];
 $yorumlar = $obj->getYorum($haber_id);
 if($_POST) {
-    $yorum = strip_tags(htmlspecialchars($_POST['yorum']));
+    $yorum = htmlspecialchars(strip_tags($_POST['yorum']));
     $obj->addYorum($haber_id,$yorum);
 }

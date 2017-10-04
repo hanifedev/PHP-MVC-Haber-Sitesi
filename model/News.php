@@ -49,7 +49,7 @@ class News extends Connection{
         else $orderByAtRead = "DESC";
         $count = (int)$count;
         $startFrom = (int)$startFrom;
-        $posts = $this->con->query("SELECT * FROM haberler ORDER BY readcount ".$orderByAtRead." LIMIT ".$startFrom.",".$count);
+        $posts = $this->con->query("SELECT * FROM haberler ORDER BY created_at ".$orderByAtRead." LIMIT ".$startFrom.",".$count)->fetchAll(PDO::FETCH_OBJ);
         return $posts;
     }
 
@@ -62,7 +62,7 @@ class News extends Connection{
     }
 
     public function getYorum($haber_id){
-        $get = $this->con->query("SELECT * FROM yorumlar WHERE konu_id = ".$haber_id)->fetchAll(PDO::FETCH_OBJ);
+        $get = $this->con->query("SELECT * FROM yorumlar WHERE onay = '1' AND konu_id=".$haber_id)->fetchAll(PDO::FETCH_OBJ);
         return $get;
     }
 

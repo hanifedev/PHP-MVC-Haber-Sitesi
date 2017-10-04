@@ -20,8 +20,8 @@
 
     <!-- Custom styles for this template -->
     <link href="css/sb-admin.css" rel="stylesheet">
-    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-    <script>tinymce.init({ selector:'textarea' });</script>
+  <!--  <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script>tinymce.init({ selector:'textarea' });</script>!-->
   </head>
   <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <!-- Navigation -->
@@ -131,7 +131,7 @@
       <div class="card mb-3">
           <div class="card-header">
             <i class="fa fa-table"></i>
-            Data Table Example
+            Postlar
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -155,13 +155,13 @@
                   </tr>
                 </tfoot>
                 <tbody>
-                <?php foreach($icerik as $con): ?>
+                <?php foreach($icerik as $cnt): ?>
                 <tr>
-                    <td><?=$con->id?></td>
-                    <td><?=$con->title?></td>
-                    <td><?=$con->category_id?></td>
-                    <td><a href="?id=<?=$con->id?>&?islem=sil"><i class="fa fa-times"></i></a></td>
-                    <td><a href="?id=<?=$con->id?>&?islem=duzenle"><i class="fa fa-cog"></i></a></td>
+                    <td><?=$cnt->id?></td>
+                    <td><?=$cnt->title?></td>
+                    <td><?=$cnt->category_id?></td>
+                    <td><a href="?sil=<?=$cnt->id?>"><i class="fa fa-times"></i></a></td>
+                    <td><a href="editContent.php?duzenle=<?=$cnt->id?>"><i class="fa fa-cog"></i></a></td>
                     <?php endforeach;?>
                   </tr>
                 </tbody>
