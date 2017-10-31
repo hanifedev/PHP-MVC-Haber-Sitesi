@@ -9,10 +9,7 @@ if($usrObj->isLoggedIn() == NULL) {
 if($usrObj->isLoggedIn()) {
     $userId = $_SESSION['user_id'];
     $userInfo = $usrObj->getOneUser($userId);
-    if($userInfo["yetki"] == "1"){
-        $usrObj->redirect('Admin.php');
-    }
-    else{
+    if($userInfo["yetki"] != "1"){
         $usrObj->redirect('index.php');
     }
 }
